@@ -1,0 +1,24 @@
+.textarea {
+  box-sizing: border-box;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  border-radius: 0.25rem;
+  border: 1px solid #ccc;
+  padding: 0.5rem 0.75rem;
+  width: 100%;
+  max-width: 20rem;
+
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+  }
+}
+
+.ghost {
+  background-color: transparent;
+  border-color: transparent;
+
+  &:hover {
+    border-color: #ccc;
+  }
+}

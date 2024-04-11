@@ -1,0 +1,15 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.field {
+  display: flex;
+  gap: 0.25rem;
+
+  &:has(input:not([type="checkbox"]):not([type="radio"])),
+  &:has(textarea) {
+    flex-direction: column;
+  }
+}

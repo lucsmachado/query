@@ -1,0 +1,28 @@
+.input {
+  box-sizing: border-box;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  max-width: 20rem;
+  border-radius: 0.25rem;
+  border: 1px solid #ccc;
+  padding: 0.5rem 0.75rem;
+  transition: border-color 200ms;
+
+  &:not([type="checkbox"]):not([type="radio"]) {
+    width: 100%;
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+  }
+}
+
+.ghost {
+  background-color: transparent;
+  border-color: transparent;
+
+  &:hover {
+    border-color: #ccc;
+  }
+}
