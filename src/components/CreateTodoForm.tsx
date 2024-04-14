@@ -1,19 +1,26 @@
 import * as React from "react";
 import { useCreateTodo } from "@/hooks";
 import { Button, Form, Input, Label, Textarea } from ".";
+import { Todo } from "@/types";
 
 const CreateTodoForm = () => {
   const formRef = React.useRef<HTMLFormElement>(null);
 
-  const { mutate, isPending, isError, isSuccess, error } =
-    useCreateTodo(formRef);
+  const { mutate, isPending, isError, isSuccess, error } = useCreateTodo();
 
   const handleCreateTodo: React.FormEventHandler<HTMLFormElement> = (e) => {
     if (e) e.preventDefault();
     const form = e.target as HTMLFormElement;
     const formData = new FormData(form);
-    mutate(formData);
+    const newTodo: Omit<Todo, "id"> = {
+      title: formData.get("title") as string,
+      content: formData.get("content") as string,
+      done: formData.get("done") === "on",
+    };
+    mutate(newTodo);
   };
+
+  if (isSuccess) formRef.current?.reset();
 
   return (
     <Form.Root onSubmit={handleCreateTodo} ref={formRef}>

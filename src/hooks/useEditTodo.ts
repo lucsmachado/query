@@ -49,17 +49,17 @@ const useEditTodo = () => {
 
 const editTodo = async ({
   id,
-  formData,
+  todo,
 }: {
   id: number;
-  formData: FormData;
+  todo: Partial<Omit<Todo, "id">>;
 }) => {
   return await fetch(`${import.meta.env.VITE_TODOS_API_URL}/${id}`, {
     method: "PATCH",
     headers: {
       "Content-Type": "application/json",
     },
-    body: JSON.stringify(Object.fromEntries(formData)),
+    body: JSON.stringify(todo),
   });
 };
 

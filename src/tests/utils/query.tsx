@@ -8,6 +8,9 @@ export const createTestQueryClient = () =>
       queries: {
         retry: false,
       },
+      mutations: {
+        retry: false,
+      },
     },
   });
 

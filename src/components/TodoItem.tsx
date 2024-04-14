@@ -10,7 +10,12 @@ const TodoItem = ({ id, title, content, done }: Todo) => {
     if (e) e.preventDefault();
     const form = e.target as HTMLFormElement;
     const formData = new FormData(form);
-    editTodo({ id, formData });
+    const updatedTodo: Partial<Omit<Todo, "id">> = {
+      title: formData.get("title") as string | undefined,
+      content: formData.get("content") as string | undefined,
+      done: formData.get("done") === "on",
+    };
+    editTodo({ id, todo: updatedTodo });
   };
 
   return (
